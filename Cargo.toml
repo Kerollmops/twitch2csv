@@ -1,0 +1,13 @@
+[package]
+name = "twitch2csv"
+description = "A tool to stream the chats of Twitch channels as a CSV"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0.44"
+chrono = "0.4.19"
+clap = "3.0.0-beta.5"
+csv = "1.1.6"
+tokio = { version = "1.0", features = ["rt", "time", "sync", "macros", "rt-multi-thread"] }
+twitch-irc = "3.0.1"
