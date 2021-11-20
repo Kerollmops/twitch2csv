@@ -85,8 +85,8 @@ impl TimedUserMessage {
                 sender_id: msg.sender.id,
                 sender_login: msg.sender.login,
                 sender_name: msg.sender.name,
-                message_text: msg.message_text,
                 message_id: msg.message_id,
+                message_text: msg.message_text,
             }),
             otherwise => Err(otherwise),
         }
@@ -99,8 +99,8 @@ impl TimedUserMessage {
             sender_id,
             sender_login,
             sender_name,
-            message_text,
             message_id,
+            message_text,
         } = self;
 
         record.clear();
@@ -110,7 +110,7 @@ impl TimedUserMessage {
         record.push_field(sender_id.as_bytes());
         record.push_field(sender_login.as_bytes());
         record.push_field(sender_name.as_bytes());
-        record.push_field(message_text.as_bytes());
         record.push_field(message_id.as_bytes());
+        record.push_field(message_text.as_bytes());
     }
 }
