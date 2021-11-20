@@ -2,7 +2,7 @@
 name = "twitch2csv"
 description = "A tool to stream the chats of Twitch channels as a CSV"
 repository = "https://github.com/Kerollmops/twitch2csv"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2018"
 license = "MIT"
 
