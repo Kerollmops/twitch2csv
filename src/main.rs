@@ -1,7 +1,7 @@
 use std::io;
 
 use chrono::{DateTime, Utc};
-use clap::{crate_version, Parser};
+use clap::Parser;
 use csv::{ByteRecord, Writer};
 use twitch_irc::login::StaticLoginCredentials;
 use twitch_irc::message::ServerMessage;
@@ -9,11 +9,7 @@ use twitch_irc::{ClientConfig, SecureTCPTransport, TwitchIRCClient};
 
 /// A tool to stream the chats of Twitch channels as a CSV.
 #[derive(Debug, Parser)]
-#[clap(
-    version = crate_version!(),
-    name = "twitch2csv",
-    author = "Kerollmops <renault.cle@gmail.com>",
-)]
+#[clap(version, name = "twitch2csv", author = "Kerollmops <renault.cle@gmail.com>")]
 struct Opts {
     /// The list of channels to stream.
     channels: Vec<String>,
@@ -27,7 +23,7 @@ async fn main() -> csv::Result<()> {
     let (mut incoming_messages, client) = TwitchIRCClient::<SecureTCPTransport, _>::new(config);
 
     for channel in opts.channels {
-        client.join(channel);
+        client.join(channel).unwrap();
     }
 
     let stdout = io::stdout();
